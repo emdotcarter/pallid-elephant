@@ -1,10 +1,6 @@
 """Flask config."""
 import os
-from dotenv import load_dotenv
 from sqlalchemy.engine import URL
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, ".env"))
 
 
 class Config:
@@ -14,10 +10,6 @@ class Config:
     SESSION_COOKIE_NAME = os.getenv("SESSION_COOKIE_NAME")
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
-
-    @staticmethod
-    def init_app(app):
-        pass
 
 
 class ProdConfig(Config):

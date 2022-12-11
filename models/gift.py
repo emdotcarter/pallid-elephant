@@ -1,6 +1,6 @@
 from .base import Base
 
-from app import db
+from app.extensions import db
 
 class Gift(Base):
     name = db.Column(db.String, nullable=False)
