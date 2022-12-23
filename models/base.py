@@ -1,6 +1,8 @@
 import datetime
-from app.extensions import db
+
 from sqlalchemy.orm import declarative_base, declared_attr
+
+from app.extensions import db
 
 
 class Base:

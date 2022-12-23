@@ -1,5 +1,6 @@
 """Flask config."""
 import os
+
 from sqlalchemy.engine import URL
 
 
