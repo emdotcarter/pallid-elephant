@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 
-from app.extensions import db
+from ..extensions import db
 
 routes = Blueprint("routes", __name__)
 

@@ -1,6 +1,6 @@
 import sqlalchemy
 
-from app.extensions import db
+from ..app.extensions import db
 
 
 class Gift(db.Model):
