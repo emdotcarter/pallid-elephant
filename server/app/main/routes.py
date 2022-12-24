@@ -1,6 +1,8 @@
 from flask import Blueprint, request
 
-from ..extensions import db
+from server.app.extensions import db
+
+from .models import Gift
 
 routes = Blueprint("routes", __name__)
 
@@ -12,8 +14,6 @@ def hello_world():
 
 @routes.route("/1/gifts", methods=["POST"])
 def create_gift():
-    from models.gift import Gift
-
     gift = Gift(
         name=request.get_json()["name"], description=request.get_json()["description"]
     )

@@ -4,9 +4,10 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_migrate import Migrate
 
-from ..config.config import config
-from ..models import *
+from server.config.config import config
+
 from .extensions import db
+from .main.models import *
 from .main.routes import routes
 
 APPLICATION_NAME = "pallid_elephant"
