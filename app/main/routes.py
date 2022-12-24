@@ -21,3 +21,8 @@ def create_gift():
     db.session.commit()
 
     return gift
+
+
+@routes.route("/1/gifts", methods=["GET"])
+def list_gifts():
+    pass

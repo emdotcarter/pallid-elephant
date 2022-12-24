@@ -1,20 +1,16 @@
-import datetime
+from datetime import datetime
 
-from sqlalchemy.orm import declarative_base, declared_attr
+import sqlalchemy
+from flask_sqlalchemy.model import Model
 
-from app.extensions import db
 
+class Base(Model):
+    __abstract__ = True
 
-class Base:
-    @declared_attr
-    def __tablename__(cls):
-        return cls.__name__.lower()
-
-    id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(
-        db.DateTime(timezone=True), default=lambda: datetime.now(datetime.timezone.utc)
+    id = sqlalchemy.Column(sqlalchemy.BigInteger, primary_key=True)
+    created_at = sqlalchemy.Column(
+        sqlalchemy.DateTime, nullable=False, default=datetime.now()
     )
-    updated_at = db.Column(db.DateTime(timezone=True), nullable=True)
-
-
-Base = declarative_base(cls=Base)
+    updated_at = sqlalchemy.Column(
+        sqlalchemy.DateTime, nullable=False, onupdate=datetime.now()
+    )

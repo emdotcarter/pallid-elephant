@@ -1,11 +1,11 @@
+import sqlalchemy
+
 from app.extensions import db
 
-from .base import Base
 
-
-class Gift(Base):
-    name = db.Column(db.String, nullable=False)
-    description = db.Column(db.String)
+class Gift(db.Model):
+    name = sqlalchemy.Column(sqlalchemy.Text, nullable=False)
+    description = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
 
     def to_json(self):
         return {
