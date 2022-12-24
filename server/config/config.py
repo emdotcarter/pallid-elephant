@@ -10,18 +10,17 @@ class Config:
     SESSION_COOKIE_NAME = os.getenv("SESSION_COOKIE_NAME")
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
+    DEBUG = False
+    TESTING = False
 
 
 class ProdConfig(Config):
     FLASK_ENV = "production"
-    DEBUG = False
-    TESTING = False
     DATABASE_URI = os.getenv("")
 
 
 class DevConfig(Config):
     FLASK_ENV = "development"
-    DEBUG = True
     TESTING = True
     SQLALCHEMY_DATABASE_URI = URL.create(
         drivername="postgresql",

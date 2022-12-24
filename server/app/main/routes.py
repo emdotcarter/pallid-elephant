@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, make_response, request
 
 from server.app.extensions import db
 
@@ -20,9 +20,9 @@ def create_gift():
     db.session.add(gift)
     db.session.commit()
 
-    return gift
+    return make_response(gift.serialize())
 
 
 @routes.route("/1/gifts", methods=["GET"])
 def list_gifts():
-    pass
+    return make_response([g.serialize() for g in db.session.query(Gift).all()])

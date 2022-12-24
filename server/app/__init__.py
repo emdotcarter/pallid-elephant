@@ -15,6 +15,7 @@ APPLICATION_NAME = "pallid_elephant"
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, "..", ".env"))
 
+
 def create_app(config_name):
     local_app = Flask(APPLICATION_NAME)
     local_app.config.from_object(config[config_name])

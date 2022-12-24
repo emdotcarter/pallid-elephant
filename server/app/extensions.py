@@ -13,7 +13,11 @@ class Base(Model):
         sqlalchemy.DateTime, nullable=False, default=datetime.now()
     )
     updated_at = sqlalchemy.Column(
-        sqlalchemy.DateTime, nullable=False, onupdate=datetime.now()
+        sqlalchemy.DateTime,
+        nullable=False,
+        default=datetime.now(),
+        onupdate=datetime.now(),
     )
+
 
 db = SQLAlchemy(model_class=Base)
