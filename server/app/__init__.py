@@ -1,14 +1,8 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask
-from flask_migrate import Migrate
 
-from server.config.config import config
-
-from .extensions import db
 from .main.models import *
-from .main.routes import routes
 
 APPLICATION_NAME = "pallid_elephant"
 
@@ -17,12 +11,19 @@ load_dotenv(os.path.join(basedir, "..", ".env"))
 
 
 def create_app(config_name):
+    from flask import Flask
     local_app = Flask(APPLICATION_NAME)
+
+    from server.config.config import config
     local_app.config.from_object(config[config_name])
 
+    from .extensions import db
     db.init_app(local_app)
-    Migrate(local_app, db)
 
+    from .extensions import migrate
+    migrate.init_app(local_app, db)
+
+    from .main.routes import routes
     local_app.register_blueprint(routes)
 
     return local_app

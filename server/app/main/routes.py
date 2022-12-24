@@ -7,11 +7,6 @@ from .models import Gift
 routes = Blueprint("routes", __name__)
 
 
-@routes.route("/1/hello_world")
-def hello_world():
-    return "<h1>Hello, World!</h1>"
-
-
 @routes.route("/1/gifts", methods=["POST"])
 def create_gift():
     gift = Gift(
