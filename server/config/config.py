@@ -10,7 +10,6 @@ class Config:
     SESSION_COOKIE_NAME = os.getenv("SESSION_COOKIE_NAME")
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
-    DEBUG = False
     TESTING = False
 
 

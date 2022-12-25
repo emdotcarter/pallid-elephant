@@ -5,3 +5,4 @@ flask-migrate
 python-dotenv
 flask-migrate
 click
+flask-login
