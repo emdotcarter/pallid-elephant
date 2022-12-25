@@ -1,3 +1,4 @@
+import flask_login
 from flask import Blueprint, make_response, request
 
 from server.app.extensions import db
@@ -19,5 +20,6 @@ def create_gift():
 
 
 @routes.route("/1/gifts", methods=["GET"])
+@flask_login.login_required
 def list_gifts():
     return make_response([g.serialize() for g in db.session.query(Gift).all()])
